@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&display=swap');
+
+body {
+    background-image: url('./stripes.svg');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.b600 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 600;
+}
+
+.b500 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 500;
+}
+
+.b700 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+}
+
+.hidden {
+    display: none;
+}
+
+.title-hero {
+    font-size: 8em;
+}
+
+#demo {
+    font-size: 7em;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.align-center {
+    text-align: center;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+}

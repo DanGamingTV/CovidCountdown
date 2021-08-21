@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="stylesheet" href="./theme-covid.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<p class="align-center title-hero b600">Lockdown Level 4 ends in:</p>
+<div>
+ <!--  <p id="demo" class='b600 align-center'></p> -->
+  <div id="demo" class='b500'>0d 0h 00m 00s</div>
+</div>
+<div class="hidden">
+  <!-- I know this is an awful way of implementing things, but i can't be assed to alter the function to accept a date string dynamically instead of pulling data from the input field. -->
+  <span>Date Data:</span> <input type="text" id="dat" placeholder="Aug 2, 2021 15:15:00"> <button onclick="setDateStuff()">Set</button>
+</div>
+
+<div class="footer b500">
+  <p><a href="https://covid19.govt.nz/alert-levels-and-updates/current-alert-level/">Alert level source</a> - Data is updated usually within a day or so. This site is not associated with the NZ Government in any way. <a href="https://github.com/DanGamingTV/CovidCountdown">Source code</a> licensed under <a href="https://opensource.org/licenses/GPL-3.0"a>GPL 3.0</a></p>
+</div>
+
+<script>
+
+var latestDate = "Aug 24, 2021 23:59:00"
+// Set the date we're counting down to
+//var countDownDate = new Date("Aug 2, 2021 15:15:00").getTime();
+
+var closePeriodTimes = ["08:45", "09:00", "10:00", "11:00", "11:30", "12:30", "13:30", "14:15", "15:15"]
+
+function minutesAbsValTo24HRtime(mins) {
+  var thingy = mins/60
+  var hoursExtracted = Math.floor(thingy)
+  var minutesExtracted = Math.floor((thingy-hoursExtracted)*60)
+  return [hoursExtracted, minutesExtracted]
+}
+
+function findNearestTargetTime() {
+  var now2 = new Date();
+  var currentSpecialMinutes = (parseInt(now2.getHours(), 10)*60) + parseInt(now2.getMinutes(), 10)
+  // console.log(`currentSpecialMinutes: ${currentSpecialMinutes}`)
+  periodTimesInMinutes = []
+  // console.log(closePeriodTimes)
+  for (i = 0; i < closePeriodTimes.length; i++) {
+    var perTime = closePeriodTimes[i]
+    var splitted = perTime.split(":")
+    var calcedMinTime = (parseInt(splitted[0], 10)*60) + parseInt(splitted[1], 10)
+    // console.log(calcedMinTime)
+    if (calcedMinTime <= currentSpecialMinutes) {
+      console.log(`bye bye ${perTime}`)
+      //closePeriodTimes.splice(i, 1)
+    } else {
+      console.log(`we addin ${perTime}`)
+      periodTimesInMinutes.push(calcedMinTime)
+    }
+  }
+  // console.log(periodTimesInMinutes)
+  if (periodTimesInMinutes.length > 0) {
+    var closest = periodTimesInMinutes.reduce(function(prev, curr) {
+    return (Math.abs(curr - currentSpecialMinutes) < Math.abs(prev - currentSpecialMinutes) ? curr : prev);
+  })
+  // console.log(closest)
+  // console.log(periodTimesInMinutes)
+  var theDateTHingy = minutesAbsValTo24HRtime(closest).join(":")
+  return `${now2.getMonth()+1}/${now2.getDate()}/${now2.getFullYear()} ${theDateTHingy}`
+  } else {
+    return false;
+  }
+  
+}
+
+var countDownDate;
+// Update the count down every 1 second
+var pageLoad;
+function setDateStuff(dateStringThing) {
+if (dateStringThing) {
+  countDownDate = new Date(dateStringThing).getTime();
+} else {
+  countDownDate = new Date(document.querySelector("#dat").value).getTime();
+}
+pageLoad = new Date().getTime();
+
+//START
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    //// console.log(`percentage: ${100-((countDownDate-now)*100)}%`)
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  //days > 0 ? `${days}d ` ? `` + hours > 0 ? `${hours} h` : ``
+  var formattedDateString = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+  document.getElementById("demo").innerHTML = formattedDateString
+  document.title = `${formattedDateString} - Countdown`
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+    document.title = "EXPIRED";
+    setTimeout(setNearTimeLoop, 2000)
+  }
+}, 1000);
+
+//END
+
+}
+
+function setNearTimeLoop() {
+  var nerTargTim = findNearestTargetTime()
+  if (nerTargTim) {
+    var inpElm = document.getElementById("dat")
+  inpElm.placeholder = nerTargTim
+  inpElm.value = nerTargTim
+  setDateStuff()
+  }
+ 
+}
+
+setNearTimeLoop()
+
+// const queryString = window.location.search;
+// const urlParams = new URLSearchParams(queryString);
+// 
+// if (urlParams.get('datetime')) {
+//   var inpElm = document.getElementById("dat")
+// inpElm.value = urlParams.get('datetime')
+// setDateStuff()
+// }
+
+setDateStuff(latestDate)
+
+</script>
+
+</body>
+</html>
+
