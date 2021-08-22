@@ -1,5 +1,5 @@
-/* latestDate */ var ld = "Aug 24, 2021 23:59:00"
-/* currentLockdownStart */ var cls = new Date("17 Aug, 2021 23:59:00").getTime()
+/* latestDate */ var ld = Date.parse("Aug 24, 2021 23:59:00 +12:00")
+/* currentLockdownStart */ var cls = Date.parse("17 Aug, 2021 23:59:00 +12:00")
 /* countDownDate */ var cdd;
 /* percentageOfLockdownThrough */ var pt;
 /* a_ */ var a_;
