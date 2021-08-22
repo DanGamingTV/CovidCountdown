@@ -1,0 +1,98 @@
+// @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&display=swap');
+
+$font-primary: ('Baloo 2', sans-serif), monospace, sans-serif;
+// $font-primary: sans-serif;
+
+
+$fonts: $font-primary;
+$weights: 400, 500, 600, 700, 800;
+$sizes: 7em, 5em, 3em;
+
+/* @for $font_i from 1 through length($fonts) {
+    $font: nth($fonts, $font_i);
+    @each $weight in $weights {
+        .f#{$font_i}-w#{$weight} {
+            font-weight: $weight;
+            font-family: $font;
+        }
+        @for $size_i from 1 through length($sizes) {
+            $size: nth($sizes, $size_i);
+            .s#{$size_i} {
+                font-size: $size;
+            }
+            .f#{$font_i}-w#{$weight}-s#{$size_i} {
+                font-weight: $weight;
+                font-family: $font;
+                font-size: $size;
+            }
+            .w#{$weight}-s#{$size_i} {
+                font-weight: $weight;
+                font-size: $size;
+            }
+            .f#{$font_i}-s#{$size_i} {
+                font-family: $font;
+                font-size: $size;
+            }
+        }
+    }
+    .f#{$font_i} {
+        font-family: $font;
+    }
+} */
+
+@for $i from 1 through length($fonts) {
+    $font: nth($fonts, $i);
+    .f-#{$i} {
+        font-family: $font;
+    }
+}
+
+@each $weight in $weights {
+    .w-#{$weight} {
+        font-weight: $weight;
+    }
+}
+
+@for $b from 1 through length($sizes) {
+    $size: nth($sizes, $b);
+    .s-#{$b} {
+        font-size: $size;
+    }
+}
+
+body {
+    background: url('./img/stripes.svg') no-repeat fixed top/cover;
+}
+
+.z {
+    margin: 0;
+}
+
+.c {
+    text-align: center;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+}
+
+.hero {
+    @extend .c, .s-2, .f-1, .w-600, .z;
+}
+
+.clock {
+    @extend .w-500, .f-2, .s-1, .z, .c;
+}
+
+.subtitle {
+    @extend .c, .w-500, .f-1, .s-3, .z;
+}
+
+.footer {
+    @extend .f-1, .w-500, .c;
+}

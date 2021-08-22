@@ -18,23 +18,20 @@
   <meta name="author" content="danno.nz">
 </head>
 <body>
-  <noscript>Your browser does not support JavaScript! Why????? I get it if you're using tor browser or whatever but this website isn't a security threat to your system (trust me, it's literally open source)</noscript>
+  <noscript>Your browser does not support JavaScript! Why????? I get it if you're using tor browser or whatever but this
+    website isn't a security threat to your system (trust me, it's literally open source)</noscript>
   <div>
     <!-- TODO: I have no idea how to center this parent div (the one above this line) vertically on the page. I hate CSS and I wish we had better web standards but w3 messed up in the early days and we're stuck with this forever it seems. :( -->
-    <p class="align-center title-hero b600">Lockdown Level 4 ends in:</p>
-    <div id="demo" class='b500'>0d 0h 00m 00s</div>
-    <p class="align-center subtitle b500" id="percentageThrough"></p>
+    <p class="hero">Lockdown Level 4 ends in:</p>
+    <div id="demo" class='clock'>0d 0h 00m 00s</div>
+    <p class="subtitle" id="percentageThrough"></p>
   </div>
-  <div class="footer b500">
+  <div class="footer">
     <p><a href="https://covid19.govt.nz/alert-levels-and-updates/current-alert-level/">Alert level source</a> - Data is
       updated usually within a day or so. This site is not associated with the NZ Government in any way. <a
         href="https://github.com/DanGamingTV/CovidCountdown">Source code</a> licensed under <a
         href="https://opensource.org/licenses/GPL-3.0" a>GPL 3.0</a></p>
   </div>
-  <script>
-    var latestDate = "Aug 24, 2021 23:59:00"
-    var currentLockdownStart = new Date("17 Aug, 2021 23:59:00").getTime()
-  </script>
   <script src="./js/script.min.js"></script>
 </body>
 </html>
