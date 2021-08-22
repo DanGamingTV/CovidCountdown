@@ -1,31 +1,26 @@
-/* latestDate */ var ld = Date.parse("Aug 24, 2021 23:59:00 +12:00")
-/* currentLockdownStart */ var cls = Date.parse("17 Aug, 2021 23:59:00 +12:00")
-/* countDownDate */ var cdd;
-/* percentageOfLockdownThrough */ var pt;
-/* a_ */ var a_;
-/* b_ */ var b_;
+/* latestDate */ var latestDate = Date.parse("Aug 24, 2021 23:59:00 +12:00")
+/* currentLockdownStart */ var currentLockdownStart_ = Date.parse("17 Aug, 2021 23:59:00 +12:00")
 // Update the count down every 1 second
-function setDateStuff(ds /* dateStringThing */ ) {
-  cdd = new Date(ds).getTime();
+function setDateStuff(selector, percentageSelector, ds /* dateStringThing */, currentLockdownStart) {
+  var countdownDate = new Date(ds).getTime();
 
   //START
   var loop = () => {
     // Get today's date and time
     var now = new Date().getTime();
-    a_ = cdd  - cls;
-    b_ = now - cls;
-
-    pt = (b_ / a_) * 100;
+    var a_ = countdownDate  - currentLockdownStart;
+    var b_ = now - currentLockdownStart;
+    var pt = (b_ / a_) * 100;
     pt =
       pt <= 100 ? pt : 100;
-    document.getElementById(
-      "percentageThrough"
+    document.querySelector(
+      percentageSelector
     ).innerHTML = `We are ${Math.floor(
       pt
     )}% of the way through lockdown`;
-    //// console.log(`percentage: ${100-((cdd-now)*100)}%`)
+    //// console.log(`percentage: ${100-((countdownDate-now)*100)}%`)
     // Find the distance between now and the count down date
-    var distance = cdd - now;
+    var distance = countdownDate - now;
 
     // Time calculations for days, hours, minutes and seconds
     var d = Math.floor(distance / (1000 * 60 * 60 * 24)); /* days */
@@ -39,13 +34,13 @@ function setDateStuff(ds /* dateStringThing */ ) {
     //days > 0 ? `${days}d ` ? `` + hours > 0 ? `${hours} h` : ``
     var fds = /* formattedDateString */
       d + "d " + h + "h " + m + "m " + s + "s ";
-    document.getElementById("demo").innerHTML = fds;
+    document.querySelector(selector).innerHTML = fds;
     document.title = `${fds} - Countdown`;
 
     // If the count down is over, write some text
     if (distance < 0) {
       clearInterval(x);
-      document.getElementById("demo").innerHTML = "EXPIRED";
+      document.querySelector(selector).innerHTML = "EXPIRED";
       document.title = "EXPIRED";
     }
   }
@@ -53,4 +48,5 @@ function setDateStuff(ds /* dateStringThing */ ) {
   var x = setInterval(loop, 1000);
 }
 
-setDateStuff(ld);
+setDateStuff("#demo", "#percentageThrough", latestDate, currentLockdownStart_);
+// sus
