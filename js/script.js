@@ -9,15 +9,20 @@ function setDateStuff(dateStringThing) {
   pageLoad = new Date().getTime();
 
   //START
-  var x = setInterval(function () {
+  var x = setInterval(() => {
     // Get today's date and time
     var now = new Date().getTime();
     a_ = countDownDate - currentLockdownStart;
     b_ = now - currentLockdownStart;
 
     percentageOfLockdownThrough = (b_ / a_) * 100;
-    percentageOfLockdownThrough = percentageOfLockdownThrough <= 100 ? percentageOfLockdownThrough : 100
-    document.getElementById("percentageThrough").innerHTML = `We are ${Math.floor(percentageOfLockdownThrough)}% of the way through lockdown`
+    percentageOfLockdownThrough =
+      percentageOfLockdownThrough <= 100 ? percentageOfLockdownThrough : 100;
+    document.getElementById(
+      "percentageThrough"
+    ).innerHTML = `We are ${Math.floor(
+      percentageOfLockdownThrough
+    )}% of the way through lockdown`;
     //// console.log(`percentage: ${100-((countDownDate-now)*100)}%`)
     // Find the distance between now and the count down date
     var distance = countDownDate - now;
@@ -42,11 +47,8 @@ function setDateStuff(dateStringThing) {
       clearInterval(x);
       document.getElementById("demo").innerHTML = "EXPIRED";
       document.title = "EXPIRED";
-      setTimeout(setNearTimeLoop, 2000);
     }
   }, 1000);
-
-  //END
 }
 
 setDateStuff(latestDate);
