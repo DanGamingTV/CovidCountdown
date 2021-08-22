@@ -1,46 +1,46 @@
-var latestDate = "Aug 24, 2021 23:59:00"
-var currentLockdownStart = new Date("17 Aug, 2021 23:59:00").getTime()
-var countDownDate;
-var percentageOfLockdownThrough;
-var a_;
-var b_;
+/* latestDate */ var ld = "Aug 24, 2021 23:59:00"
+/* currentLockdownStart */ var cls = new Date("17 Aug, 2021 23:59:00").getTime()
+/* countDownDate */ var cdd;
+/* percentageOfLockdownThrough */ var pt;
+/* a_ */ var a_;
+/* b_ */ var b_;
 // Update the count down every 1 second
-function setDateStuff(dateStringThing) {
-  countDownDate = new Date(dateStringThing).getTime();
+function setDateStuff(ds /* dateStringThing */ ) {
+  cdd = new Date(ds).getTime();
 
   //START
-  var x = setInterval(() => {
+  var loop = () => {
     // Get today's date and time
     var now = new Date().getTime();
-    a_ = countDownDate - currentLockdownStart;
-    b_ = now - currentLockdownStart;
+    a_ = cdd  - cls;
+    b_ = now - cls;
 
-    percentageOfLockdownThrough = (b_ / a_) * 100;
-    percentageOfLockdownThrough =
-      percentageOfLockdownThrough <= 100 ? percentageOfLockdownThrough : 100;
+    pt = (b_ / a_) * 100;
+    pt =
+      pt <= 100 ? pt : 100;
     document.getElementById(
       "percentageThrough"
     ).innerHTML = `We are ${Math.floor(
-      percentageOfLockdownThrough
+      pt
     )}% of the way through lockdown`;
-    //// console.log(`percentage: ${100-((countDownDate-now)*100)}%`)
+    //// console.log(`percentage: ${100-((cdd-now)*100)}%`)
     // Find the distance between now and the count down date
-    var distance = countDownDate - now;
+    var distance = cdd - now;
 
     // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor(
-      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    var d = Math.floor(distance / (1000 * 60 * 60 * 24)); /* days */
+    var h = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60) /* hours */
     );
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    var m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); /* minutes */
+    var s = Math.floor((distance % (1000 * 60)) / 1000); /* seconds */
 
     // Output the result in an element with id="demo"
     //days > 0 ? `${days}d ` ? `` + hours > 0 ? `${hours} h` : ``
-    var formattedDateString =
-      days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-    document.getElementById("demo").innerHTML = formattedDateString;
-    document.title = `${formattedDateString} - Countdown`;
+    var fds = /* formattedDateString */
+      d + "d " + h + "h " + m + "m " + s + "s ";
+    document.getElementById("demo").innerHTML = fds;
+    document.title = `${fds} - Countdown`;
 
     // If the count down is over, write some text
     if (distance < 0) {
@@ -48,7 +48,9 @@ function setDateStuff(dateStringThing) {
       document.getElementById("demo").innerHTML = "EXPIRED";
       document.title = "EXPIRED";
     }
-  }, 1000);
+  }
+  loop()
+  var x = setInterval(loop, 1000);
 }
 
-setDateStuff(latestDate);
+setDateStuff(ld);
