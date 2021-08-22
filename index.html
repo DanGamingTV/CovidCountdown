@@ -23,6 +23,7 @@
     <!-- TODO: I have no idea how to center this parent div (the one above this line) vertically on the page. I hate CSS and I wish we had better web standards but w3 messed up in the early days and we're stuck with this forever it seems. :( -->
     <p class="align-center title-hero b600">Lockdown Level 4 ends in:</p>
     <div id="demo" class='b500'>0d 0h 00m 00s</div>
+    <p class="align-center subtitle b500" id="percentageThrough"></p>
   </div>
   <div class="footer b500">
     <p><a href="https://covid19.govt.nz/alert-levels-and-updates/current-alert-level/">Alert level source</a> - Data is
@@ -32,6 +33,7 @@
   </div>
   <script>
     var latestDate = "Aug 24, 2021 23:59:00"
+    var currentLockdownStart = new Date("17 Aug, 2021 23:59:00").getTime()
   </script>
   <script src="./js/script.min.js"></script>
 </body>

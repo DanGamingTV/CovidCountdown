@@ -1,4 +1,7 @@
 var countDownDate;
+var percentageOfLockdownThrough;
+var a_;
+var b_;
 // Update the count down every 1 second
 var pageLoad;
 function setDateStuff(dateStringThing) {
@@ -9,6 +12,12 @@ function setDateStuff(dateStringThing) {
   var x = setInterval(function () {
     // Get today's date and time
     var now = new Date().getTime();
+    a_ = countDownDate - currentLockdownStart;
+    b_ = now - currentLockdownStart;
+
+    percentageOfLockdownThrough = (b_ / a_) * 100;
+    percentageOfLockdownThrough = percentageOfLockdownThrough <= 100 ? percentageOfLockdownThrough : 100
+    document.getElementById("percentageThrough").innerHTML = `We are ${Math.floor(percentageOfLockdownThrough)}% of the way through lockdown`
     //// console.log(`percentage: ${100-((countDownDate-now)*100)}%`)
     // Find the distance between now and the count down date
     var distance = countDownDate - now;
