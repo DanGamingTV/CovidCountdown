@@ -43,5 +43,13 @@
             "preamble": null,
             "quote_style": "best"
         }
-    }
+    },
+    "liveSassCompile.settings.formats": [
+
+        {
+            "format": "compressed",
+            "extensionName": ".css",
+            "savePath": null
+        }
+    ]
 }

@@ -1,8 +1,8 @@
-/* latestDate */ var latestDate = Date.parse("Aug 24, 2021 23:59:00 +12:00")
-/* currentLockdownStart */ var currentLockdownStart_ = Date.parse("17 Aug, 2021 23:59:00 +12:00")
+var latestDate = Date.parse("Aug 24, 2021 23:59:00 +12:00")
+var currentLockdownStart_ = Date.parse("17 Aug, 2021 23:59:00 +12:00")
 // Update the count down every 1 second
-function setDateStuff(selector, percentageSelector, ds /* dateStringThing */, currentLockdownStart) {
-  var countdownDate = new Date(ds).getTime();
+function setDateStuff(selector, percentageSelector, dateStringThing, currentLockdownStart) {
+  var countdownDate = new Date(dateStringThing).getTime();
 
   //START
   var loop = () => {
@@ -49,4 +49,3 @@ function setDateStuff(selector, percentageSelector, ds /* dateStringThing */, cu
 }
 
 setDateStuff("#demo", "#percentageThrough", latestDate, currentLockdownStart_);
-// sus

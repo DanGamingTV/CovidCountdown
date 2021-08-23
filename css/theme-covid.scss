@@ -1,45 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap');
 
-$font-primary: ('Baloo 2', sans-serif), monospace;
+$font-primary: ('Baloo 2', sans-serif);
 $stripes: url('data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%221440%22%20height%3D%22680%22%20xmlns%3Av%3D%22https%3A%2F%2Fvecta.io%2Fnano%22%3E%3Cdefs%3E%3Cpath%20id%3D%22A%22%20d%3D%22M0%200h1440v680H0z%22%2F%3E%3Cpath%20id%3D%22B%22%20d%3D%22M21.98%20650.635l1878.834.142.007%2093.592-1878.834-.142z%22%2F%3E%3C%2Fdefs%3E%3Cg%20fill-rule%3D%22evenodd%22%3E%3Cmask%20id%3D%22C%22%20fill%3D%22%23fff%22%3E%3Cuse%20xlink%3Ahref%3D%22%23A%22%2F%3E%3C%2Fmask%3E%3Cg%20mask%3D%22url%28%23C%29%22%20fill%3D%22%23fc0%22%20fill-rule%3D%22nonzero%22%3E%3Cuse%20xlink%3Ahref%3D%22%23B%22%20transform%3D%22matrix%28.707107%20-.707107%20.707107%20.707107%20-1776.620316%20807.106544%29%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23B%22%20x%3D%22263.688%22%20y%3D%220.012%22%20transform%3D%22matrix%28.707107%20-.707107%20.707107%20.707107%20-1699.396746%20993.565499%29%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23B%22%20x%3D%22527.386%22%20transform%3D%22matrix%28.707107%20-.707107%20.707107%20.707107%20-1622.152876%201180.024455%29%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23B%22%20x%3D%22791.074%22%20y%3D%220.012%22%20transform%3D%22matrix%28.707107%20-.707107%20.707107%20.707107%20-1544.929306%201366.483409%29%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23B%22%20x%3D%221054.771%22%20transform%3D%22matrix%28.707107%20-.707107%20.707107%20.707107%20-1467.685436%201552.942365%29%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23B%22%20x%3D%221318.459%22%20y%3D%220.012%22%20transform%3D%22matrix%28.707107%20-.707107%20.707107%20.707107%20-1390.461866%201739.40132%29%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23B%22%20x%3D%221582.157%22%20transform%3D%22matrix%28.707107%20-.707107%20.707107%20.707107%20-1313.217996%201925.860276%29%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23B%22%20x%3D%221845.844%22%20y%3D%220.013%22%20transform%3D%22matrix%28.707107%20-.707107%20.707107%20.707107%20-1235.994426%202112.31923%29%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23B%22%20x%3D%222109.542%22%20y%3D%220.001%22%20transform%3D%22matrix%28.707107%20-.707107%20.707107%20.707107%20-1158.750556%202298.778186%29%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23B%22%20x%3D%222373.23%22%20y%3D%220.013%22%20transform%3D%22matrix%28.707107%20-.707107%20.707107%20.707107%20-1081.526986%202485.237141%29%22%2F%3E%3Cuse%20xlink%3Ahref%3D%22%23B%22%20x%3D%222636.928%22%20y%3D%220.001%22%20transform%3D%22matrix%28.707107%20-.707107%20.707107%20.707107%20-1004.283116%202671.696097%29%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E');
-// $font-primary: sans-serif;
-
 
 $fonts: $font-primary;
-$weights:500, 600;
-$sizes: 7em, 5em, 3em;
+$weights:500, 600, 400;
+// $sizes: 7em, 4em, 3em, 2em;
+$sizes: 7em, 4em, 3em, 2em;
 
-/* @for $font_i from 1 through length($fonts) {
-    $font: nth($fonts, $font_i);
-    @each $weight in $weights {
-        .f#{$font_i}-w#{$weight} {
-            font-weight: $weight;
-            font-family: $font;
-        }
-        @for $size_i from 1 through length($sizes) {
-            $size: nth($sizes, $size_i);
-            .s#{$size_i} {
-                font-size: $size;
-            }
-            .f#{$font_i}-w#{$weight}-s#{$size_i} {
-                font-weight: $weight;
-                font-family: $font;
-                font-size: $size;
-            }
-            .w#{$weight}-s#{$size_i} {
-                font-weight: $weight;
-                font-size: $size;
-            }
-            .f#{$font_i}-s#{$size_i} {
-                font-family: $font;
-                font-size: $size;
-            }
-        }
-    }
-    .f#{$font_i} {
-        font-family: $font;
-    }
-} */
+$footer-height: 6.244672em;
+
+// @for $font_i from 1 through length($fonts) {
+//  $font: nth($fonts, $font_i);
+//  @each $weight in $weights {
+//      .f#{$font_i}-w#{$weight} {
+//          font-weight: $weight;
+//          font-family: $font;
+//      }
+//      @for $size_i from 1 through length($sizes) {
+//          $size: nth($sizes, $size_i);
+//          .s#{$size_i} {
+//              font-size: $size;
+//          }
+//          .f#{$font_i}-w#{$weight}-s#{$size_i} {
+//              font-weight: $weight;
+//              font-family: $font;
+//              font-size: $size;
+//          }
+//          .w#{$weight}-s#{$size_i} {
+//              font-weight: $weight;
+//              font-size: $size;
+//          }
+//          .f#{$font_i}-s#{$size_i} {
+//              font-family: $font;
+//              font-size: $size;
+//          }
+//      }
+//  }
+//  .f#{$font_i} {
+//      font-family: $font;
+//  }
+// }
 
 @for $i from 1 through length($fonts) {
     $font: nth($fonts, $i);
@@ -82,18 +83,26 @@ body {
     color: #000;
 }
 
+.push {
+    height: $footer-height;
+}
+
 .hero {
-    @extend .c, .s-2, .f-1, .w-600, .z;
+    @extend .c, .f-1, .w-500, .z;
+    font-size: 12vmin;
 }
 
 .clock {
-    @extend .w-500, .f-2, .s-1, .z, .c;
+    @extend .w-600, .f-1, .z, .c;
+    font-size: 14vmin;
 }
 
 .subtitle {
-    @extend .c, .w-500, .f-1, .s-3, .z;
+    @extend .c, .w-500, .f-1, .z;
+    font-size: 8vmin;
 }
 
 .footer {
     @extend .f-1, .w-500, .c;
+    font-size: 4min;
 }
