@@ -1,12 +1,13 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
   <link rel="stylesheet" href="./css/theme-covid.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-touch-fullscreen" content="yes">
   <meta name="apple-mobile-web-app-title" content="Lockdown Countdown">
-  <link rel="apple-touch-icon" href="img/CardImage.png"/>
+  <link rel="apple-touch-icon" href="img/CardImage.png" />
   <title>Lockdown Countdown</title>
   <meta name="theme-color" content="#F3C82D" />
   <meta property="og:title" content="NZ COVID-19 Lockdown Countdown" />
@@ -21,6 +22,7 @@
   <meta name="revisit-after" content="3 days">
   <meta name="author" content="danno.nz">
 </head>
+
 <body>
   <noscript>Your browser does not support JavaScript! Why????? I get it if you're using tor browser or whatever but this
     website isn't a security threat to your system (trust me, it's literally open source)</noscript>
@@ -44,5 +46,12 @@
         href="https://opensource.org/licenses/GPL-3.0" a>GPL 3.0</a></p>
   </div>
   <script src="./js/script.min.js"></script>
+  <script>
+    var latestDate = Date.parse("Aug 24, 2021 23:59:00 +12:00")
+    var currentLockdownStart_ = Date.parse("17 Aug, 2021 23:59:00 +12:00")
+    setDateStuff("#demo", "#percentageThrough", latestDate, currentLockdownStart_);
+    setDateStuff("#demo2", "", Date.parse("Aug 23, 2021 16:00:00 +12:00"));
+  </script>
 </body>
+
 </html>
