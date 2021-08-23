@@ -1,6 +1,6 @@
 
 // Update the count down every 1 second
-function setDateStuff(selector, percentageSelector, dateStringThing, currentLockdownStart) {
+function setDateStuff(setTitle, selector, percentageSelector, dateStringThing, currentLockdownStart) {
   var countdownDate = new Date(dateStringThing).getTime();
 
   //START
@@ -15,9 +15,9 @@ function setDateStuff(selector, percentageSelector, dateStringThing, currentLock
       pt <= 100 ? pt : 100;
     document.querySelector(
       percentageSelector
-    ).innerHTML = `We are ${Math.floor(
+    ).innerHTML = `(${Math.floor(
       pt
-    )}% of the way through lockdown`;
+    )}% of the way through lockdown)`;
     }
     
     //// console.log(`percentage: ${100-((countdownDate-now)*100)}%`)
@@ -37,13 +37,17 @@ function setDateStuff(selector, percentageSelector, dateStringThing, currentLock
     var fds = /* formattedDateString */
       d + "d " + h + "h " + m + "m " + s + "s ";
     document.querySelector(selector).innerHTML = fds;
-    document.title = `${fds} - Countdown`;
+    if (setTitle) {
+      document.title = `${fds} - Countdown`;
+    }
 
     // If the count down is over, write some text
     if (distance < 0) {
       clearInterval(x);
       document.querySelector(selector).innerHTML = "EXPIRED";
-      document.title = "EXPIRED";
+      if (setTitle) {
+        document.title = "EXPIRED";
+      }
     }
   }
   loop()
