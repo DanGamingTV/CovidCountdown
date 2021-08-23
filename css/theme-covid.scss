@@ -88,39 +88,61 @@ body {
     height: $footer-height;
 }
 
+$global-scale: 0.8;
+
+$clock-scale: 1 * $global-scale;
+$hero-scale: 0.8 * $global-scale;
+$subtitle-scale: 0.9 * $global-scale;
+$footer-scale: 1.4 * $global-scale;
+$border-scale: 1 * $global-scale;
+
+$clock-size: 13vmin * $clock-scale;
+$hero-size: 12vmin * $hero-scale;
+$subtitle-size: 8vmin * $subtitle-scale;
+$footer-size: 1em * $footer-scale;
+$line-height-hero: 1.1em;
+
 .hero {
     @extend .c, .f-1, .w-500, .z;
-    font-size: 12vmin;
+    font-size: $hero-size;
+    line-height: $line-height-hero;
 }
 .hero.small {
     @extend .c, .f-1, .w-500, .z;
-    font-size: 6vmin;
+    font-size: $hero-size*0.9;
 }
 
 .clock {
     @extend .w-600, .f-1, .z, .c;
-    font-size: 14vmin;
-    margin-top: -6vmin;
+    font-size: $clock-size;
+    margin-top: -($clock-size*0.23);
 }
 .clock.small {
     @extend .w-600, .f-1, .z, .c;
-    font-size: 8vmin;
+    font-size: $clock-size*0.7;
+    // margin-top: -(($clock-size*0.7)*0.23);
+    margin-top: unset;
+    margin-bottom: unset;
 }
 
 .subtitle {
     @extend .c, .w-400, .f-1, .z;
-    font-size: 8vmin;
-    margin-top: -4vmin;
+    font-size: $subtitle-size;
+    margin-top: -($subtitle-size*0.5);
 }
 .subtitle.small {
     @extend .c, .w-400, .f-1, .z;
-    font-size: 6vmin;
-    margin-top: -5vmin;
+    font-size: $subtitle-size*0.75;
+    margin-top: -(($subtitle-size*0.75)*0.5);
 }
 
 .footer {
     @extend .f-1, .w-500, .c;
-    font-size: 4min;
+    font-size: $footer-size;
+}
+
+.footer > p {
+    padding: 0px $footer-size;
 }
 
 .countdown-card {
@@ -128,4 +150,7 @@ body {
     width: fit-content;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 6vmin;
+    padding: (1vmax * $border-scale);
+    border: solid #000 (1vmax * $border-scale);
 }
