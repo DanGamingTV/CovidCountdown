@@ -8,7 +8,8 @@ function setDateStuff(selector, percentageSelector, dateStringThing, currentLock
   var loop = () => {
     // Get today's date and time
     var now = new Date().getTime();
-    var a_ = countdownDate  - currentLockdownStart;
+    if (percentageSelector != '') {
+      var a_ = countdownDate  - currentLockdownStart;
     var b_ = now - currentLockdownStart;
     var pt = (b_ / a_) * 100;
     pt =
@@ -18,6 +19,8 @@ function setDateStuff(selector, percentageSelector, dateStringThing, currentLock
     ).innerHTML = `We are ${Math.floor(
       pt
     )}% of the way through lockdown`;
+    }
+    
     //// console.log(`percentage: ${100-((countdownDate-now)*100)}%`)
     // Find the distance between now and the count down date
     var distance = countdownDate - now;
@@ -49,3 +52,4 @@ function setDateStuff(selector, percentageSelector, dateStringThing, currentLock
 }
 
 setDateStuff("#demo", "#percentageThrough", latestDate, currentLockdownStart_);
+setDateStuff("#demo2", "", Date.parse("Aug 23, 2021 16:00:00 +12:00"));

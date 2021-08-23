@@ -92,10 +92,18 @@ body {
     @extend .c, .f-1, .w-500, .z;
     font-size: 12vmin;
 }
+.hero.small {
+    @extend .c, .f-1, .w-500, .z;
+    font-size: 6vmin;
+}
 
 .clock {
     @extend .w-600, .f-1, .z, .c;
     font-size: 14vmin;
+}
+.clock.small {
+    @extend .w-600, .f-1, .z, .c;
+    font-size: 8vmin;
 }
 
 .subtitle {
